@@ -11,10 +11,10 @@ export const Container = styled.header`
 export const Cart = styled(Link)`
   display: flex;
   align-items: center;
-  text-decoration: none;
   transition: opacity 0.2s;
 
   &:hover {
+    text-decoration: none;
     opacity: 0.6;
   }
 
