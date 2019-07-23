@@ -12,7 +12,7 @@ export const Container = styled.div`
 export const ColBootstrap = styled(Col)`
   display: flex;
   flex-direction: column;
-  background: #d9d9d9;
+  background: #fff;
   margin: 10px 10px;
   border-radius: 4px;
   padding: 10px;
