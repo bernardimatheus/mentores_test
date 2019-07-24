@@ -1,66 +1,64 @@
 import styled from 'styled-components';
-import { Col } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
-
+import { Col, Button } from 'react-bootstrap';
 import { darken } from 'polished';
 
 export const Container = styled.div`
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 20px;
-  list-style: none;
-  a:hover {
-    text-decoration: none;
-    color: #999;
-  }
-  a {
-    text-decoration: none;
-  }
-`;
+  background: #fff;
+  padding: 15px 30px;
+  border-radius: 4px;
+  display: flex;
 
-export const LinkStyled = styled(Link)`
-  margin-top: 10px;
+  div {
+    display: flex;
 
-  > strong {
-    font-size: 16px;
-    line-height: 20px;
-    color: #999;
-    margin-top: 15px;
-    text-decoration: none;
+    justify-content: center;
+
+    img {
+      max-width: 200px;
+      align-self: center;
+    }
   }
 `;
 
 export const ColBootstrap = styled(Col)`
   display: flex;
   flex-direction: column;
-  background: #191920;
-  margin: 10px 10px;
-  border-radius: 4px;
-  padding: 10px;
 
-  img {
-    align-self: center;
-    max-width: 220px;
+  padding: 0 30px 0 30px;
+  h2 {
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    text-align: justify;
+  }
+
+  strong {
+    margin: 10px 0px 10px;
+    font-weight: bold;
+    color: #333;
   }
 
   > span {
-    color: #999;
-    font-size: 21px;
-    font-weight: bold;
-    margin: 5px 0 20px;
-    margin-top: auto;
+    text-align: justify;
+    line-height: 1.6;
+    color: #666;
   }
 `;
 
-export const Btn = styled.button`
+export const ButtonBootstrap = styled(Button)`
   padding: 0;
   background: #333;
   color: #fff;
   border: 0;
   border-radius: 4px;
   overflow: hidden;
+  margin-top: auto;
 
   display: flex;
   align-items: center;
+  align-self: center;
+  width: 40%
   transition: background 0.2s;
 
   &:hover {
