@@ -15,8 +15,8 @@ export const Container = styled.div`
   }
 `;
 
-export const ButtonBootstrap = styled(Button)`
-  background: #46a4d9;
+export const ButtonBootstrap = styled.button`
+  background: #333;
   color: #fff;
   border: 0;
   border-radius: 4px;
@@ -26,7 +26,11 @@ export const ButtonBootstrap = styled(Button)`
   transition: background 0.2s;
 
   &:hover {
-    background: ${darken(0.04, '#46a4d9')};
+    background: ${darken(0.04, '#333')};
+  }
+
+  &:focus {
+    outline: none;
   }
 `;
 

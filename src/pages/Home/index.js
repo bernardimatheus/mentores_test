@@ -3,13 +3,14 @@ import { MdAddShoppingCart } from 'react-icons/md';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Row } from 'react-bootstrap';
+
 import { formatPrice } from '../../util/format';
 
 import * as CartActions from '../../store/modules/cart/actions';
 
 import api from '../../services/api';
 
-import { Container, ColBootstrap, ButtonBootstrap } from './styles';
+import { Container, ColBootstrap, Btn, LinkStyled } from './styles';
 
 class Home extends Component {
   state = {
@@ -38,25 +39,25 @@ class Home extends Component {
   render() {
     const { phones } = this.state;
     const { amount } = this.props;
+
     return (
       <Container>
         <Row>
           {phones.map(phone => (
             <ColBootstrap sm key={phone.id}>
               <img src={phone.picture} alt={phone.title} />
-              <strong>{phone.title}</strong>
+              <LinkStyled to={`/detail/${phone.id}`}>
+                <strong>{phone.title}</strong>
+              </LinkStyled>
               <span>{phone.priceFormatted}</span>
 
-              <ButtonBootstrap
-                type="button"
-                onClick={() => this.handleAddPhone(phone.id)}
-              >
+              <Btn type="button" onClick={() => this.handleAddPhone(phone.id)}>
                 <div>
                   <MdAddShoppingCart size={16} color="#FFF" />{' '}
                   {amount[phone.id] || 0}
                 </div>
                 <span>ADICIONAR AO CARRINHO</span>
-              </ButtonBootstrap>
+              </Btn>
             </ColBootstrap>
           ))}
         </Row>
