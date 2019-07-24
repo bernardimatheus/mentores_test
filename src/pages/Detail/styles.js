@@ -46,7 +46,7 @@ export const ColBootstrap = styled(Col)`
   }
 `;
 
-export const ButtonBootstrap = styled(Button)`
+export const ButtonBootstrap = styled.button`
   padding: 0;
   background: #333;
   color: #fff;

@@ -2,9 +2,11 @@ import React, { Component } from 'react';
 import { Row } from 'react-bootstrap';
 import { MdAddShoppingCart } from 'react-icons/md';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import api from '../../services/api';
 import { ColBootstrap, Container, ButtonBootstrap } from './styles';
 import { formatPrice } from '../../util/format';
+import * as CartActions from '../../store/modules/cart/actions';
 
 // import { Container } from './styles';
 
@@ -27,6 +29,12 @@ class Detail extends Component {
       phone: data,
     });
   }
+
+  handleAddPhone = id => {
+    const { addToCartRequest } = this.props;
+
+    addToCartRequest(id);
+  };
 
   render() {
     const { phone } = this.state;
@@ -77,4 +85,10 @@ const mapStateToProps = state => ({
   }, {}),
 });
 
-export default connect(mapStateToProps)(Detail);
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(CartActions, dispatch);
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Detail);
