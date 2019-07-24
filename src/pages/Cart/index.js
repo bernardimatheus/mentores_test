@@ -14,12 +14,12 @@ import * as CartActions from '../../store/modules/cart/actions';
 
 import { Container, TableBootstrap, ButtonBootstrap, Total } from './styles';
 
-function Cart({ cart, removeFromCart, updateAmount, total }) {
+function Cart({ cart, removeFromCart, updateAmountRequest, total }) {
   function increment(phone) {
-    updateAmount(phone.id, phone.amount + 1);
+    updateAmountRequest(phone.id, phone.amount + 1);
   }
   function decrement(phone) {
-    updateAmount(phone.id, phone.amount - 1);
+    updateAmountRequest(phone.id, phone.amount - 1);
   }
 
   return (

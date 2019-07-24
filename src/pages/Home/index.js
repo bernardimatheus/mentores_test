@@ -29,10 +29,10 @@ class Home extends Component {
     });
   }
 
-  handleAddPhone = phone => {
-    const { addToCart } = this.props;
+  handleAddPhone = id => {
+    const { addToCartRequest } = this.props;
 
-    addToCart(phone);
+    addToCartRequest(id);
   };
 
   render() {
@@ -49,7 +49,7 @@ class Home extends Component {
 
               <ButtonBootstrap
                 type="button"
-                onClick={() => this.handleAddPhone(phone)}
+                onClick={() => this.handleAddPhone(phone.id)}
               >
                 <div>
                   <MdAddShoppingCart size={16} color="#FFF" />{' '}
