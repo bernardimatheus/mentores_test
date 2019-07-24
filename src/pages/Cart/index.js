@@ -1,15 +1,27 @@
 import React from 'react';
 
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import {
   MdRemoveCircleOutline,
   MdAddCircleOutline,
   MdDelete,
 } from 'react-icons/md';
 
+import { formatPrice } from '../../util/format';
+
+import * as CartActions from '../../store/modules/cart/actions';
+
 import { Container, TableBootstrap, ButtonBootstrap, Total } from './styles';
 
-function Cart({ cart }) {
+function Cart({ cart, removeFromCart, updateAmount, total }) {
+  function increment(phone) {
+    updateAmount(phone.id, phone.amount + 1);
+  }
+  function decrement(phone) {
+    updateAmount(phone.id, phone.amount - 1);
+  }
+
   return (
     <Container>
       <TableBootstrap>
@@ -34,20 +46,29 @@ function Cart({ cart }) {
               </td>
               <td>
                 <div>
-                  <ButtonBootstrap type="button">
+                  <ButtonBootstrap
+                    type="button"
+                    onClick={() => decrement(phone)}
+                  >
                     <MdRemoveCircleOutline size={20} color="#46a4d9" />
                   </ButtonBootstrap>
                   <input type="number" readOnly value={phone.amount} />
-                  <ButtonBootstrap type="button">
+                  <ButtonBootstrap
+                    type="button"
+                    onClick={() => increment(phone)}
+                  >
                     <MdAddCircleOutline size={20} color="#46a4d9" />
                   </ButtonBootstrap>
                 </div>
               </td>
               <td>
-                <strong>R$3300,00</strong>
+                <strong>{phone.subtotal}</strong>
               </td>
               <td>
-                <ButtonBootstrap type="button">
+                <ButtonBootstrap
+                  type="button"
+                  onClick={() => removeFromCart(phone.id)}
+                >
                   <MdDelete size={20} color="#46a4d9" />
                 </ButtonBootstrap>
               </td>
@@ -60,7 +81,7 @@ function Cart({ cart }) {
         <ButtonBootstrap type="button">Finalizar pedido</ButtonBootstrap>
         <Total>
           <span>TOTAL</span>
-          <strong>R$1600,00</strong>
+          <strong>{total}</strong>
         </Total>
       </footer>
     </Container>
@@ -68,7 +89,21 @@ function Cart({ cart }) {
 }
 
 const mapStateToProps = state => ({
-  cart: state.cart,
+  cart: state.cart.map(phone => ({
+    ...phone,
+    subtotal: formatPrice(phone.price * phone.amount),
+  })),
+  total: formatPrice(
+    state.cart.reduce((total, phone) => {
+      return total + phone.price * phone.amount;
+    }, 0)
+  ),
 });
 
-export default connect(mapStateToProps)(Cart);
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(CartActions, dispatch);
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Cart);
