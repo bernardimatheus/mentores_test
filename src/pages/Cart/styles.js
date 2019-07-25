@@ -100,7 +100,7 @@ export const Total = styled.div`
   }
 
   strong {
-    font-size: 28px;
+    font-size: 22px;
     margin-left: 5px;
   }
 `;

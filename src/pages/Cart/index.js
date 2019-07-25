@@ -24,7 +24,7 @@ function Cart({ cart, removeFromCart, updateAmountRequest, total }) {
 
   return (
     <Container>
-      <TableBootstrap>
+      <TableBootstrap responsive>
         <thead>
           <tr>
             <th />

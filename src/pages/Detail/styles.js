@@ -53,12 +53,9 @@ export const ButtonBootstrap = styled.button`
   border: 0;
   border-radius: 4px;
   overflow: hidden;
-  margin-top: auto;
 
   display: flex;
   align-items: center;
-  align-self: center;
-  width: 40%
   transition: background 0.2s;
 
   &:hover {
