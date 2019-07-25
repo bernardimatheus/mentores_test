@@ -4,7 +4,7 @@
 
 ### - Heroku
 
-[MentoresTore](https://mentorestore-frontend.herokuapp.com/)
+Acesse agora mesmo: [MentoresTore](https://mentorestore-frontend.herokuapp.com/)
 
 Para simular requisições a API, outra aplicação também está rodando no Heroku: [Json-server](https://github.com/bernardimatheus/json-web-server.git).
 
