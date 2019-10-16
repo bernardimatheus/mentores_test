@@ -14,7 +14,7 @@ Para simular requisições a API, outra aplicação também está rodando no Her
 
 Para rodar o projeto localmente, você precisará instalar:
 
-- yarn ou node
+- yarn ou npm
 - json-server
 
 ## Install
